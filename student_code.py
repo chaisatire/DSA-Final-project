@@ -11,7 +11,6 @@ def shortest_path(M, start, goal):
 
     # Keep track of distances travelled for the intersections
     node_dist = float()
-    rem_dist = float()
     path_dist = float()
 
     # keep track of visited nodes and previous cities in the path
@@ -42,8 +41,7 @@ def shortest_path(M, start, goal):
         # Going through all the cities to find the estimated distance from start to goal via adjoining city
         for city in M.roads[current]:
             node_dist = distance[current] + calculate_distance(M, current, city)
-            rem_dist = calculate_distance(M, city, goal)
-            path_dist = node_dist + rem_dist
+            path_dist = node_dist + calculate_distance(M, city, goal)
             if distance[city] > node_dist:
                 distance[city] = node_dist
                 prev[city] = current
